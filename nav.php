@@ -5,7 +5,7 @@ if(isset($_GET['nav'])){
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid"> <!-- Fluido -->
 		<div class="row">
-		<a class="navbar-brand"> <img src="../img/logo.png"  height="45" alt="logo"> </a>
+		<a class="navbar-brand"> <img src="../img/logo.png"  height="35" alt="logo"> </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -13,6 +13,9 @@ if(isset($_GET['nav'])){
 		<ul class="navbar-nav">
 		<li class="nav-item">
 		<a class="nav-link" href="arquivos">Arquivos</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link" href="treinamento">Treinamentos</a>
 		</li>
 		<li class="nav-item">
 		<a class="nav-link" href="configuracao">Configurações</a>
@@ -32,7 +35,7 @@ if(isset($_GET['nav'])){
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid"> <!-- Fluido -->
 		<div class="row">
-		<a class="navbar-brand"> <img src="../img/logo.png"  height="45" alt="logo"> </a>
+		<a class="navbar-brand"> <img src="../img/logo.png"  height="35" alt="logo"> </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 
 		<span class="navbar-toggler-icon"></span>
@@ -44,6 +47,9 @@ if(isset($_GET['nav'])){
 		</li>
 		<li class="nav-item">
 		<a class="nav-link" href="empreendimento">Empreendimentos</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link" href="treinamento">Treinamentos</a>
 		</li>
 		<li class="nav-item">
 		<a class="nav-link" href="configura">Configurações</a>

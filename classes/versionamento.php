@@ -4,7 +4,7 @@ if($_GET['nav']=='adm'){
 
 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 	<div class="card">
-		<div class="card-header" style="background-color: #004f7c; padding-top: 8px;">
+		<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px;">
 			<h5 class="card-title" style="color:white;" > <center><b> Sobre </b></h5>
 		</div>
 		<div class="card-body">

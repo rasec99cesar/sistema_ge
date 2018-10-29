@@ -25,7 +25,8 @@ if (isset($_SESSION["loged"]) && ($_SESSION["loged"] == 0)){
 	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Faz o site ser Responsivo -->
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"/></script> <!-- JQuery -->
 	<script type="text/javascript" src="../js/jquery.mask.min.js"/></script> <!-- JS das mascaras -->
-	<script language="JavaScript" type="text/javascript" src="../js/cidades-estados-1.4-utf8.js"></script> <!-- Biblioteca Das cidades e Estados -->
+	<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 </head>
 <body>
 <?php $_GET['nav'] = 'adm';
@@ -85,7 +86,7 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 		<div class="container-fluid" id="Pagina"> <!-- Faz o Responsivo ser "Fluido" -->
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"> <!-- Faz os campos de texto ocuparem 8 -->
 		<div class="card">
-		<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+		<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 		   	<h5 class="card-title" style="color:white;" > <center> Novo Cliente </h5>
 
 		</div>

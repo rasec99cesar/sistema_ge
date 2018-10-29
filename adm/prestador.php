@@ -153,7 +153,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 					<div class="card">
-						<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+						<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 							<h5 class="card-title" style="color:white;" > <center> Visualização de Corretor </h5>
 						</div>
 						<div class="card-body">
@@ -235,7 +235,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 				<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
 				<div class="card">
-					<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+					<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 						<h5 class="card-title" style="color:white;" > <center> Situação </h5>
 					</div>
 					<div class="card-body">
@@ -277,7 +277,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 
 			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"> <!-- Faz os campos de texto ocuparem 8 --> <BR>
 					<div class="card">
-						<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+						<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 							<h5 class="card-title" style="color:white;" > <center> Arquivos </h5>
 						</div>
 						<div class="card-body">
@@ -317,7 +317,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"> <!-- Faz os campos de texto ocuparem 8 --><br>
 				<div class="card">
-					<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+					<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 						<h5 class="card-title" style="color:white;" > <center> Novo Arquivo </h5>
 					</div>
 					<div class="card-body">
@@ -408,7 +408,7 @@ echo'
  	<div class="row">
  		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Corretores </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -479,7 +479,7 @@ echo'
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Informações </b></h5>
 			  	</div>
 			  	<div class="card-body">

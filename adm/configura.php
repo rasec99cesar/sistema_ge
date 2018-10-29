@@ -56,7 +56,7 @@ echo'
  	<div class="row">
  		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Edição Administrador </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -105,7 +105,7 @@ echo'
 		echo'
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%; margin-top: 25px;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Administradores </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -225,7 +225,7 @@ echo'
 
 
 			if($sql = mysqli_query($mysqli,"INSERT INTO usuario(nm_nome, ds_email, ky_senha, bl_ativo, lv_nivel) VALUES ('".$nm_nome."','".$nm_email."','".$senha."','1','0')")){ 	/* Cria o login */
-				
+
 				echo'
 					<script>
 					alert("Cadastro efetuado com sucesso!");
@@ -266,7 +266,7 @@ echo'
  	<div class="row">
  		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Novo Administrador </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -321,7 +321,7 @@ echo'
 		echo'
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%; margin-top: 25px;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Administradores </b></h5>
 			  	</div>
 			  	<div class="card-body">

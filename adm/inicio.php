@@ -53,7 +53,7 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Faz o site ser Responsivo -->
 
-	
+
 
 </head>
 <body>
@@ -65,7 +65,7 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
  	<div class="row">
  		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Cadastros Pendentes </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -81,7 +81,7 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 							    	</tr>
 							  	</thead>
 								<tbody>
-							  		<?php 
+							  		<?php
 							  		include_once("../Conexao.php");
 							  		$sql= mysql_query("SELECT * FROM prestador WHERE bl_ativo = 0");
 							  		if($sql != NULL){
@@ -107,8 +107,8 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 							  		}
 							  		?>
 							  	</tbody>
-							</table>	
-						</div>					  
+							</table>
+						</div>
 				    </div>
 				</div>
 
@@ -116,7 +116,7 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 		</div>
 		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Aprovações de Combo </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -132,12 +132,12 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 							    	</tr>
 							  	</thead>
 								<tbody>
-							  		<?php 
+							  		<?php
 							  		include_once("../Conexao.php");
 							  		$sql= mysql_query("SELECT * FROM cliente_has_combos WHERE bl_ativo = 0");
 							  		if($sql != NULL){
 							  			while($sql_result=mysql_fetch_array($sql)){
-							  				
+
 							  				$combos_id_combo = $sql_result['Combos_id_combo'];
 
 							  				$sql_combo = mysql_query("SELECT * FROM combos WHERE id_combo = '".$combos_id_combo."' ");
@@ -172,8 +172,8 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 
 							  		 ?>
 							  	</tbody>
-							</table>	
-						</div>			
+							</table>
+						</div>
 				    </div>
 				 </div>
 			</div>
@@ -182,7 +182,7 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 		 	<div class="card">
 				<div class="card-body">
 			  		<div class="row">
-				  		
+
 				    </div>
 				 </div>
 			</div>

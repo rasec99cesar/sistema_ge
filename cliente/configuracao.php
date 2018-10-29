@@ -85,7 +85,7 @@ echo'
  	<div class="row">
  		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Edição de Conta </b></h5>
 			  	</div>
 			  	<div class="card-body">

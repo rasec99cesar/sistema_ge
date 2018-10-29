@@ -47,7 +47,8 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='upload_arq')){
 
 		$sql = mysqli_query($mysqli,"INSERT INTO arquivos(nm_nome, ds_caminho, bl_ativo) VALUES ('".$nome."','".$imagem."','1')");
 		$result = mysqli_fetch_array( mysqli_query($mysqli,"SELECT * FROM arquivos WHERE nm_nome = '".$nome."' AND ds_caminho = '".$imagem."' ") );
-		$sql = mysqli_query($mysqli," INSERT INTO usuario_has_arquivos(usuario_id_usuario, arquivos_id_arquivos, bl_ativo) VALUES ('".$id."','".$result['id_arquivos']."','1') ");
+		$sql = mysqli_query($mysqli,"INSERT INTO empreendimentos_has_arquivos(empreendimentos_id_empreendimentos, arquivos_id_arquivos, bl_ativo) VALUES ('".$id."','".$result['id_arquivos']."','1') ");
+
 		header('Location: empreendimento.php?id='.$id.'&acao=visualizar');
 
 }
@@ -56,8 +57,12 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='desativa_arq')){
 	$id = $_GET['id'];
 	$id_arquivo = $_GET['id_arquivo'];
 
+	$sql = mysqli_query($mysqli,"SELECT * FROM arquivos WHERE id_arquivos='".$id_arquivo."' ");
+	$sql = mysqli_fetch_array($sql);
+	unlink($sql['ds_caminho']);
+
 	$sql = mysqli_query($mysqli,"UPDATE arquivos SET bl_ativo='0' WHERE id_arquivos='".$id_arquivo."' ");
-	$sql = mysqli_query($mysqli,"UPDATE usuario_has_arquivos SET bl_ativo='0' WHERE arquivos_id_arquivos='".$id_arquivo."' ");
+	$sql = mysqli_query($mysqli,"UPDATE empreendimentos_has_arquivos SET bl_ativo='0' WHERE arquivos_id_arquivos='".$id_arquivo."' ");
 	header('Location: empreendimento.php?id='.$id.'&acao=visualizar');
 
 }
@@ -99,7 +104,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 
 
 	if($_GET["acao"] == 'aprovar'){
-		if($sql= mysqli_query($mysqli,"UPDATE usuario SET bl_ativo= 1 WHERE id_usuario= '".$id."' ")){
+		if($sql= mysqli_query($mysqli,"UPDATE empreendimentos SET bl_ativo= 1 WHERE id_Empreendimentos= '".$id."' ")){
 			header('Location: empreendimento');
 		}else{
 			echo'<h1> Erro Encontrado </h1>
@@ -108,7 +113,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 			';
 		}
 	}else if($_GET["acao"] == 'negar'){
-		if($sql= mysqli_query($mysqli,"UPDATE usuario SET bl_ativo= 2 WHERE id_usuario= '".$id."' ")){
+		if($sql= mysqli_query($mysqli,"UPDATE empreendimentos SET bl_ativo= 2 WHERE id_Empreendimentos= '".$id."' ")){
 			header('Location: empreendimento');
 		}else{
 			echo'<h1> Erro Encontrado </h1>
@@ -140,6 +145,11 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 			<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script> <!-- Biblioteca Jquery Geral -->
 			<script type="text/javascript" src="../js/bootstrap.bundle.js"></script><!-- Bootstrap JS  -->
 
+			<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+			<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);
+			</script>
+
+
 			<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Faz o site ser Responsivo -->
 			<script language="JavaScript" type="text/javascript" src="../js/cidades-estados-1.4-utf8.js"></script> <!-- Biblioteca Das cidades e Estados -->
 			<script type="text/javascript" src="../js/jquery.mask.min.js"/></script> <!-- JS das mascaras -->
@@ -149,14 +159,15 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 		include("../nav.php");
 
 		echo'
+
 <br>
 <div class="container-fluid" id="Pagina"> <!-- Faz o Responsivo ser "Fluido" -->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 					<div class="card">
-						<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
-							<h5 class="card-title" style="color:white;" > <center> Visualização de Corretor </h5>
+						<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
+							<h5 class="card-title" style="color:white;" > <center> Visualização de Empreendimento </h5>
 						</div>
 						<div class="card-body">
 							<form name="Usuario" id="Usuario" action="empreendimento.php?acao=visual" method="post" enctype="multipart/form-data"> <!-- Formulário -->
@@ -170,11 +181,11 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 		                  </label>
 
 		                  <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Descrição Curta <br>
-		                    <textarea class="form-control" name="ds_curta" id="ds_curta" rows="3" maxlength="299" >'.$ds_curta.'</textarea>
+		                    <textarea style="resize: none" class="form-control" name="ds_curta" id="ds_curta" rows="3" maxlength="299" >'.$ds_curta.'</textarea>
 		                  </label>
 
 		                  <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Caracteristicas <br>
-		                    <textarea class="form-control" name="ds_longa" id="ds_longa" rows="25" maxlength="5000" >'.$ds_longa.'</textarea>
+		                    <textarea style="resize: none" class="form-control" name="ds_longa" id="ds_longa" rows="25" maxlength="5000" >'.$ds_longa.'</textarea>
 		                  </label>
 
 		                  <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> Telefone <a class="text-danger">*</a><br>
@@ -184,10 +195,9 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 
 
 											<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Logo do empreendimento<a class="text-danger">*</a><br>
-													<img src="'.$im_logo.'" alt="" class="img-thumbnail">
+												<img src="'.$im_logo.'" alt="" class="img-thumbnail">
 												<input type="file" name="im_logo"  class="form-control">
 											</label>
-
 
 
 									</div>
@@ -208,7 +218,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 				<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
 				<div class="card">
-					<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+					<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 						<h5 class="card-title" style="color:white;" > <center> Situação </h5>
 					</div>
 					<div class="card-body">
@@ -229,11 +239,11 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 						echo'
 						<br>
 						<label  class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<a style="width: 49%" href="empreendimento.php?id='.$result["id_usuario"].'&acao=aprovar" class="btn btn-success " role="button" aria-pressed="true">
+							<a style="width: 49%" href="empreendimento.php?id='.$result["id_Empreendimentos"].'&acao=aprovar" class="btn btn-success " role="button" aria-pressed="true">
 								<img width="18" height="18" alt="Aprovar" src="../img/thumbs-up.png">
 							</a>
 
-							<a style="width: 49%; padding-left:2%;" href="empreendimento.php?id='.$result["id_usuario"].'&acao=negar" class="btn btn-danger " role="button" aria-pressed="true">
+							<a style="width: 49%; padding-left:2%;" href="empreendimento.php?id='.$result["id_Empreendimentos"].'&acao=negar" class="btn btn-danger " role="button" aria-pressed="true">
 								<img width="18" height="18" alt="Negar" src="../img/thumb-down.png">
 							</a>
 						</label>';
@@ -250,7 +260,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 
 			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"> <!-- Faz os campos de texto ocuparem 8 --> <BR>
 					<div class="card">
-						<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+						<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 							<h5 class="card-title" style="color:white;" > <center> Arquivos </h5>
 						</div>
 						<div class="card-body">
@@ -263,7 +273,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 										</tr>
 									</thead>
 									<tbody>';
-										if($sql_arquivo = mysqli_query($mysqli,"SELECT * FROM empreendimentos_has_arquivos WHERE usuario_id_usuario ='".$id."' AND bl_ativo = '1' ")){
+										if($sql_arquivo = mysqli_query($mysqli,"SELECT * FROM empreendimentos_has_arquivos WHERE empreendimentos_id_empreendimentos ='".$id."' AND bl_ativo = '1' ")){
 
 										while($sql_result_arqui = mysqli_fetch_array($sql_arquivo)){
 											$sql_result_arq = mysqli_fetch_array(mysqli_query($mysqli,"SELECT * FROM arquivos WHERE id_arquivos ='".$sql_result_arqui['arquivos_id_arquivos']."' AND bl_ativo = '1' "));
@@ -290,7 +300,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"> <!-- Faz os campos de texto ocuparem 8 --><br>
 				<div class="card">
-					<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+					<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 						<h5 class="card-title" style="color:white;" > <center> Novo Arquivo </h5>
 					</div>
 					<div class="card-body">
@@ -329,9 +339,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 	$ds_longa		= $_POST['ds_longa'];
 	$celular 		= $_POST['celular'];
 
-	var_dump($_FILES["im_logo"]);
-
-	if($_FILES["im_logo"] != NULL){
+	if($_FILES['im_logo']['size'] != 0){
 		$arquivo = $_FILES["im_logo"];
 		$pasta_dir = "../uploads/img/";
 		if(!file_exists($pasta_dir)){
@@ -353,7 +361,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 	echo'
 		<script>
 			alert("Dados Atualizados.");
-
+			document.location = "empreendimento";
 		</script>';
 
 	}else{
@@ -390,7 +398,7 @@ echo'
  	<div class="row">
  		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Empreendimentos </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -403,10 +411,10 @@ echo'
 					  			<table class="table table-striped">
 									<thead>
 								    	<tr>
+													<th scope="col" width="50"> </th>
 								      		<th scope="col">Nome</th>
-
-								      		<th scope="col">Situação</th>
-								      		<th scope="col">  </th>
+								      		<th scope="col" width="150">Situação</th>
+								      		<th scope="col" width="50">  </th>
 								    	</tr>
 								  	</thead>
 									<tbody>
@@ -419,6 +427,7 @@ echo'
 								  				echo'
 
 										<tr>
+												<td><img src="'.$sql_result["im_logo"].'" height="45" > </td>
 										    <td>'.$sql_result["nm_nome"].'</td>
 
 
@@ -460,7 +469,7 @@ echo'
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding: 1%;">  <!-- Faz os campos de texto ocuparem 8 -->
 		 	<div class="card">
-				<div class="card-header" style="background-color: #004f7c; padding-top: 8px; padding-bottom: 2px; ">
+				<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
 			    	<h5 class="card-title" style="color:white;" > <center><b> Informações </b></h5>
 			  	</div>
 			  	<div class="card-body">
@@ -474,13 +483,13 @@ echo'
 			  			</div>
 			  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 1%;">';
 			  				 $total= mysqli_num_rows($sql);
-			  					$sql= mysqli_query($mysqli,"SELECT * FROM empreendimentos WHERE bl_ativo = 1 AND lv_nivel= 1");
+			  					$sql= mysqli_query($mysqli,"SELECT * FROM empreendimentos WHERE bl_ativo = 1 ");
 			  					$aprovado = mysqli_num_rows($sql);
-			  					$sql= mysqli_query($mysqli,"SELECT * FROM empreendimentos WHERE bl_ativo = 0 AND lv_nivel= 1");
+			  					$sql= mysqli_query($mysqli,"SELECT * FROM empreendimentos WHERE bl_ativo = 0 ");
 			  					$espera = mysqli_num_rows($sql);
 			  					echo'<br><p> Estão Cadastrados '.$total.' empreendimentos.</p>
-			  							<p> • '.$espera.' Aguardando aprovação. </p>
-			  							<p> • '.$aprovado.' Estão Ativos. </p>';
+			  							<p> • '.$espera.' estão Desativados. </p>
+			  							<p> • '.$aprovado.' estão Ativos. </p>';
 			  				echo'
 			  			</div>
 				    </div>

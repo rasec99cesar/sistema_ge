@@ -90,7 +90,7 @@ if (isset($_POST['entrar'])) { 	/* Se o Botão Entrar for Pressionado */
 	  		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
 				<div class="card" style="margin-top: 42%;">
 					<div  style="margin-top: 15px; margin-left: 25%; margin-right: 25%; padding: 20px;">
-					<center>  <img src="img/logo.png"  height="70" alt="logo">
+					<center>  <img src="img/logo.png"  height="50" alt="logo">
 					</center></div>
 					<form name="login" value="Login" id="Login" action="login.php" method="post" style="padding: 10px;margin-bottom: 20px">
 					  <div class="form-group">
