@@ -100,6 +100,17 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 
 	if($_GET["acao"] == 'aprovar'){
 		if($sql= mysqli_query($mysqli,"UPDATE usuario SET bl_ativo= 1 WHERE id_usuario= '".$id."' ")){
+
+
+			$sql_result = mysqli_fetch_array(mysqli_query($mysqli,"SELECT * FROM usuario WHERE id_usuario= '".$id."' "));
+			$email = $sql_result['ds_email'];
+			$nome = $sql_result['nm_nome'];
+
+			include_once("../classes/emails.php");
+			libera_conta($email,$nome);
+
+
+
 			header('Location: prestador');
 		}else{
 			echo'<h1> Erro Encontrado </h1>
@@ -487,7 +498,7 @@ echo'
 			  			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding: 1%;">
 			  			</div>
 			  			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding: 1%;">
-			  				<center><a href="cadastro_prestador.php" class="btn btn-success " role="button" aria-pressed="true"> Novo Cliente </a> </center>
+			  				<center><a href="cadastro_prestador.php" class="btn btn-success " role="button" aria-pressed="true"> Novo Corretor </a> </center>
 			  			</div>
 			  			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding: 1%;">
 			  			</div>

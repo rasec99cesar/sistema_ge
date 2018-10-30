@@ -75,7 +75,7 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 	                  <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Nome<a class="text-danger">*</a><br>
 	                    <input type="text" name="nm_nome"  class="form-control" maxlength="70" placeholder="Arthur Dent" required/>
 	                  </label>
-
+ 
 	                  <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Descrição Curta <br>
 	                    <textarea class="form-control" name="ds_curta" id="ds_curta" rows="3" maxlength="299" ></textarea>
 	                  </label>

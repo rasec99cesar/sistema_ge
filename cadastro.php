@@ -1,26 +1,14 @@
-<?php
-session_start(); /* Inicia Sessão */
-if (isset($_SESSION["loged"]) && ($_SESSION["loged"] == 0)){
-
-}else{
-	header('Location: ../login.php');
-	session_unset();
-  	session_destroy();
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cadastro de Cliente </title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css" /> <!-- CSS Pad -->
-	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" /> <!-- CSS do BootStrap -->
+	<title>Cadastro de Corretores </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" /> <!-- CSS Pad -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> <!-- CSS do BootStrap -->
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script> <!-- Biblioteca Jquery Geral -->
-	<script type="text/javascript" src="../js/bootstrap.bundle.js"></script><!-- Bootstrap JS  -->
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> <!-- Biblioteca Jquery Geral -->
+	<script type="text/javascript" src="js/bootstrap.bundle.js"></script><!-- Bootstrap JS  -->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Faz o site ser Responsivo -->
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"/></script> <!-- JQuery -->
@@ -29,8 +17,8 @@ if (isset($_SESSION["loged"]) && ($_SESSION["loged"] == 0)){
 	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 </head>
 <body>
-<?php $_GET['nav'] = 'adm';
-	include("../nav.php");
+<?php $_GET['nav'] = 'ext';
+	include("nav.php");
 if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 	$nome 			= $_POST['nm_nome'];	/* Seta as vartiaveis */
 	$email 			= $_POST['ds_email'];
@@ -38,7 +26,7 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 	$celular 		= $_POST['celular'];
 	$conf_senha = $_POST['ds_confsenha'];
 
-	include("../Conexao.php");  /* Chama o DB */
+	include("Conexao.php");  /* Chama o DB */
 
 
 		$sql =mysqli_query($mysqli,"SELECT ds_email FROM usuario WHERE ds_email = '".$email."' ");	/* Verifica se existe o email no banco */
@@ -53,15 +41,19 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 			}else{ /* Se coincidem */
 				$senha = password_hash($senha, PASSWORD_DEFAULT);
 
-
-
 				$sql =mysqli_query($mysqli,"INSERT INTO usuario(nm_nome, ds_email, ky_senha, bl_ativo, lv_nivel, nu_telefone) VALUES ('".$nome."','".$email."','".$senha."','0','1','".$celular."')"); 														 /* Insere os dados do prestador */
+
+				$sql_result = mysqli_fetch_array(mysqli_query($mysqli,"SELECT * FROM usuario WHERE nm_nome= '".$nome."' AND ds_email = '".$email."' AND ky_senha = '".$senha."' "));
+				$id = $sql_result['id_usuario'];
+
+				include_once("classes/emails.php");
+				nova_conta($nome,$celular,$id);
 
 				if($sql==TRUE){ /* Se Obtiver Sucesso */
 					echo'
 					<script>
-					alert("Cadastro Realizado Com Sucesso!");
-				   	document.location = "prestador.php";
+					alert("Cadastro Realizado Com Sucesso! Você receberá um e-mail quando seu cadastro for liberado.");
+				   	document.location = "login.php";
 				   	</script>';				/* Exibe mensagem de sucesso e manda pro login */
 				}else{ 						/* Se não */
 					echo'<h2> Erro Fatal <h2>
@@ -76,7 +68,7 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 			echo'
 					<script>
 					alert("O Email '.$email.' já está em uso.");
-					document.location = "cadastro_prestador.php";
+					document.location = "cadastro.php";
 				   	</script>';
 		}
 
@@ -87,12 +79,12 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"> <!-- Faz os campos de texto ocuparem 8 -->
 		<div class="card">
 		<div class="card-header" style="background-color: #1D1D1B; padding-top: 8px; padding-bottom: 2px; ">
-		   	<h5 class="card-title" style="color:white;" > <center> Novo Cliente </h5>
+		   	<h5 class="card-title" style="color:white;" > <center> Novo Corretor </h5>
 
 		</div>
 		<div class="card-body">
 			<div class="row">
-				<form name="Usuario" id="Usuario" action="cadastro_prestador.php" method="post" enctype="multipart/form-data"> <!-- Formulário -->
+				<form name="Usuario" id="Usuario" action="cadastro.php" method="post" enctype="multipart/form-data"> <!-- Formulário -->
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="row"> <!-- Gera uma campo de flutuação -->
 							<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Nome Completo <a class="text-danger">*</a><br>
@@ -123,9 +115,13 @@ if (isset($_POST['cadastrar'])) { 	/* Se o Botão Entrar for Pressionado */
 							    confirm_password.setCustomValidity("");
 							  }
 							}
+
 							password.onchange = validatePassword;
 							confirm_password.onkeyup = validatePassword;
 						</script>
+
+
+
 
 					<br>
 

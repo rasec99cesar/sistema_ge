@@ -145,7 +145,7 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 			<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script> <!-- Biblioteca Jquery Geral -->
 			<script type="text/javascript" src="../js/bootstrap.bundle.js"></script><!-- Bootstrap JS  -->
 
-			<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+			<script src="http://js.nicedit.com/nicEdit-latest.js/" type="text/javascript"></script>
 			<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);
 			</script>
 
