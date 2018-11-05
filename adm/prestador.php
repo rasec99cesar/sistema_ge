@@ -211,23 +211,6 @@ if ((isset($_GET['acao'])) && ($_GET['acao'] =='ativa_serv')){
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 									</div>
 									<div class="row" style="margin-left: 3px;"> <!-- Gera uma campo de flutuação -->
 										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Botao">
