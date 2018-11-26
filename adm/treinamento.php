@@ -93,8 +93,7 @@ if ((isset($_GET["id"])) && (isset($_GET["acao"]))){
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script> <!-- Biblioteca Jquery Geral -->
 		<script type="text/javascript" src="../js/bootstrap.bundle.js"></script><!-- Bootstrap JS  -->
 
-		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-		<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+		
 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Faz o site ser Responsivo -->
 		<script language="JavaScript" type="text/javascript" src="../js/cidades-estados-1.4-utf8.js"></script> <!-- Biblioteca Das cidades e Estados -->

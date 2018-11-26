@@ -111,6 +111,7 @@ if (isset($_POST['entrar'])) { 	/* Se o Botão Entrar for Pressionado */
 								<input type="password" name="senha" class="form-control" id="Senha" placeholder="Sua Senha" required>
 							</div>
 							<center> <input type="submit" name="entrar" class="btn btn-success"  value="Entrar">
+								<a href="cadastro.php">  <input type="button" name="Cadastrar-se" class="btn btn-info"  value="Cadastrar-se"> </a>
 							</form>
 						</div>													<!--Fecha Card -->
 					</div>
